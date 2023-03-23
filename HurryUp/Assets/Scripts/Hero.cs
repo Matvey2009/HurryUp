@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class Hero : MonoBehaviour
 {
     [SerializeField] private float speed = 3f;
     [SerializeField] private float jumpForce = 15f;
