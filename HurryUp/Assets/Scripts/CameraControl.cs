@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform Hero;
     private Vector3 pos;
 
     private void Awake()
     {
-        if (!player)
-            player = FindObjectOfType<Player>().transform;
+        if (!Hero)
+            Hero = FindObjectOfType<Hero>().transform;
     }
 
     private void Update()
     {
-        pos = player.position;
+        pos = Hero.position;
         pos.z = -10f;
 
         transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime);
