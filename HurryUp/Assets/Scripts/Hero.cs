@@ -53,9 +53,12 @@ public class Hero : MonoBehaviour
         isGrounded = collider.Length > 1;
     }
 
+
+
     public void GetDamage()
     {
          lives -= 1;
          Debug.Log(lives);
     }
+
 }
