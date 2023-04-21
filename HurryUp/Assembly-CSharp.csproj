@@ -47,12 +47,12 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\WoodHep.cs" />
-     <Compile Include="Assets\Scripts\Hero.cs" />
-     <Compile Include="Assets\Scripts\CameraControl.cs" />
-     <Compile Include="Assets\Scripts\Entity.cs" />
-     <Compile Include="Assets\Scripts\Frog.cs" />
      <Compile Include="Assets\Scripts\Turtle.cs" />
+     <Compile Include="Assets\Scripts\WoodHep.cs" />
+     <Compile Include="Assets\Scripts\Entity.cs" />
+     <Compile Include="Assets\Scripts\Hero.cs" />
+     <Compile Include="Assets\Scripts\Frog.cs" />
+     <Compile Include="Assets\Scripts\CameraControl.cs" />
  <Reference Include="UnityEngine">
  <HintPath>F:/2020.2.0a12/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
