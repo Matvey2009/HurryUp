@@ -205,6 +205,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &19325770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 19325771}
+  m_Layer: 0
+  m_Name: attackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &19325771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19325770}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1526334609}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &104844267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1120,7 @@ GameObject:
   - component: {fileID: 412828245}
   - component: {fileID: 412828244}
   - component: {fileID: 412828243}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WoodHep (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1578,8 +1608,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589205753}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.71, y: 1.4, z: 93.2045}
-  m_LocalScale: {x: 26.370552, y: 15.132645, z: 1}
+  m_LocalPosition: {x: 20.71, y: 0.693, z: 93.2045}
+  m_LocalScale: {x: 26.370552, y: 14.08558, z: 1}
   m_Children: []
   m_Father: {fileID: 554080502}
   m_RootOrder: 14
@@ -1647,7 +1677,7 @@ GameObject:
   - component: {fileID: 626862058}
   - component: {fileID: 626862057}
   - component: {fileID: 626862056}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Frog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1681,7 +1711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5deb64676a4cc5c44878a44533c8fa8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
 --- !u!61 &626862057
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1850,7 +1879,7 @@ GameObject:
   - component: {fileID: 665921588}
   - component: {fileID: 665921587}
   - component: {fileID: 665921586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turtle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3269,7 +3298,7 @@ GameObject:
   - component: {fileID: 1042729498}
   - component: {fileID: 1042729497}
   - component: {fileID: 1042729496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turtle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4231,7 +4260,7 @@ GameObject:
   - component: {fileID: 1410550348}
   - component: {fileID: 1410550347}
   - component: {fileID: 1410550346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turtle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4888,9 +4917,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526334608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 1, z: 3}
+  m_LocalPosition: {x: -2, y: 3, z: 3}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 19325771}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4935,6 +4965,13 @@ MonoBehaviour:
   speed: 3
   jumpForce: 7
   lives: 5
+  isAttacking: 0
+  isRecharged: 1
+  attackPos: {fileID: 19325771}
+  attackRagne: 15
+  enemy:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!50 &1526334612
 Rigidbody2D:
   serializedVersion: 4
@@ -5365,7 +5402,7 @@ GameObject:
   - component: {fileID: 1600922785}
   - component: {fileID: 1600922784}
   - component: {fileID: 1600922783}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WoodHep (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6140,7 +6177,7 @@ GameObject:
   - component: {fileID: 1926122840}
   - component: {fileID: 1926122839}
   - component: {fileID: 1926122842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Frog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6221,7 +6258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5deb64676a4cc5c44878a44533c8fa8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
 --- !u!1 &1939886339
 GameObject:
   m_ObjectHideFlags: 0
@@ -6670,7 +6706,7 @@ GameObject:
   - component: {fileID: 2039829492}
   - component: {fileID: 2039829491}
   - component: {fileID: 2039829494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WoodHep
   m_TagString: Untagged
   m_Icon: {fileID: 0}

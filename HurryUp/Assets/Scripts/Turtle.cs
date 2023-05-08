@@ -17,6 +17,7 @@ public class Turtle : Entity
     private void Start()
     {
         direction = transform.right;
+        lives = 5;
     }
 
     private void Move()
