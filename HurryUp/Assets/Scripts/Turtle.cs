@@ -41,7 +41,6 @@ public class Turtle : Entity
         {
             Hero.Instance.GetDamage();
             lives--;
-            Debug.Log("У черепаха " + lives);
         }
         if (lives <= 0)
             Die();

@@ -50,9 +50,9 @@ public class Hero : MonoBehaviour
     {
         if (isGrounded && !isAttacking) State = States.idle;
 
-        if (Input.GetButton("Horizontal"))
+        if (Input.GetButton("Horizontal") && !isAttacking)
             Run();
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (isGrounded && Input.GetButtonDown("Jump") && !isAttacking)
             Jump();
         if (Input.GetButtonDown("Fire1"))
             Attack();
@@ -69,7 +69,7 @@ public class Hero : MonoBehaviour
 
     public void Attack()
     {
-        if (isGrounded && isRecharged)
+        if (isRecharged)
         {
             State = States.attack;
             isAttacking = true;
@@ -77,28 +77,20 @@ public class Hero : MonoBehaviour
 
             StartCoroutine(AttackAnimation());
             StartCoroutine(AttackCoolDown());
-        }
-    }
-
-    public void OnAttack()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(attackPos.position, attackRagne, enemy);
-
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            colliders[i].GetComponent<Entity>().GetDamage();
+            speed = 15;
         }
     }
 
     private IEnumerator AttackAnimation()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.5f);
         isAttacking = false;
     }
     private IEnumerator AttackCoolDown()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
         isRecharged = true;
+        speed = 5;
     }
 
     private void OnDrawGizmoSelected()
@@ -118,8 +110,11 @@ public class Hero : MonoBehaviour
 
     public void GetDamage()
     {
-         lives -= 1;
-         Debug.Log(lives);
+        if (!isAttacking)
+        {
+            lives -= 1;
+            Debug.Log(lives);
+        }
     }
 
 }
