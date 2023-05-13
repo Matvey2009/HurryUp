@@ -36,16 +36,8 @@ public class Hero : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         isRecharged = true;
-}
-
-    private void Run()
-    {
-        if (isGrounded) State = States.run;
-
-        Vector3 dir = transform.right * Input.GetAxis("Horizontal");
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
-        sprite.flipX = dir.x < 0.0f; 
     }
+
     private void Update()
     {
         if (isGrounded && !isAttacking) State = States.idle;
@@ -57,9 +49,14 @@ public class Hero : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
             Attack();
     }
-    private void FixedUpdate()
+
+    private void Run()
     {
-        CheckGround();
+        if (isGrounded) State = States.run;
+
+        Vector3 dir = transform.right * Input.GetAxis("Horizontal");
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
+        sprite.flipX = dir.x < 0.0f; 
     }
 
     private void Jump()
@@ -67,18 +64,9 @@ public class Hero : MonoBehaviour
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    public void Attack()
+    private void FixedUpdate()
     {
-        if (isRecharged)
-        {
-            State = States.attack;
-            isAttacking = true;
-            isRecharged = false;
-
-            StartCoroutine(AttackAnimation());
-            StartCoroutine(AttackCoolDown());
-            speed = 15;
-        }
+        CheckGround();
     }
 
     private IEnumerator AttackAnimation()
@@ -93,10 +81,19 @@ public class Hero : MonoBehaviour
         speed = 5;
     }
 
-    private void OnDrawGizmoSelected()
+    public void Attack()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(attackPos.position, 1);
+        if (isRecharged)
+        {
+
+            State = States.attack;
+            isAttacking = true;
+            isRecharged = false;
+
+            StartCoroutine(AttackAnimation());
+            StartCoroutine(AttackCoolDown());
+            speed = 15;
+        }
     }
 
     private void CheckGround()
@@ -107,6 +104,11 @@ public class Hero : MonoBehaviour
         if (!isGrounded) State = States.jump;
     }
 
+    private void OnDrawGizmoSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(attackPos.position, 1);
+    }
 
     public void GetDamage()
     {
