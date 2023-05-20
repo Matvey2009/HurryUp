@@ -14,7 +14,6 @@ public class Hero : MonoBehaviour
     public bool isRecharged = true;
 
     public Transform attackPos;
-    public float attackRagne;
     public LayerMask enemy;
 
     private Rigidbody2D rb;
@@ -71,12 +70,12 @@ public class Hero : MonoBehaviour
 
     private IEnumerator AttackAnimation()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         isAttacking = false;
     }
     private IEnumerator AttackCoolDown()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         isRecharged = true;
         speed = 5;
     }
@@ -85,14 +84,12 @@ public class Hero : MonoBehaviour
     {
         if (isRecharged)
         {
-
+            speed = 15;
             State = States.attack;
             isAttacking = true;
             isRecharged = false;
-
             StartCoroutine(AttackAnimation());
             StartCoroutine(AttackCoolDown());
-            speed = 15;
         }
     }
 
@@ -112,7 +109,7 @@ public class Hero : MonoBehaviour
 
     public void GetDamage()
     {
-        if (!isAttacking)
+        if (!isAttacking && isRecharged)
         {
             lives -= 1;
             Debug.Log(lives);
