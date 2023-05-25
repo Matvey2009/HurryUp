@@ -9,4 +9,9 @@ public class ButtonPlay : MonoBehaviour
     {
         SceneManager.LoadScene(sceneid);
     }
+
+    public void ExitScene(int sceneid)
+    {
+        SceneManager.LoadScene(sceneid);
+    }
 }
